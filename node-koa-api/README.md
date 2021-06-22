@@ -1,4 +1,4 @@
-# Building a RESTful API with Koa and Postgres
+# Building a RESTful API with Koa, Knex, Objection and Postgres 
 
 Project base...
 
