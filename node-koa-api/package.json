@@ -15,11 +15,12 @@
   },
   "dependencies": {
     "chai-http": "^4.3.0",
-    "knex": "^0.95.6",
+    "knex": "^0.21.19",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-router": "^10.0.0",
     "nodemon": "^2.0.7",
+    "objection": "^2.2.15",
     "pg": "^8.6.0"
   }
 }

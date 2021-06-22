@@ -4,9 +4,9 @@ const queries = require('../db/queries/movies');
 const router = new Router();
 const BASE_URL = `/api/v1/movies`;
 
-router.get(BASE_URL, async (ctx) => {
+router.get(`${BASE_URL}`, async (ctx) => {
   try {
-    const movies = await queries.getAllMovies();
+    const movies = await queries.cobaQuery();
     ctx.body = {
       status: 'success',
       data: movies

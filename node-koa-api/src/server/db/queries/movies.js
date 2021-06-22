@@ -1,37 +1,56 @@
 const knex = require('../connection');
+const Movie = require('../models/movies')
 
-
-function getAllMovies() {
-  return knex('movies')
-    .select('*');
+async function getAllMovies() {
+  let data = await Movie.query()
+  console.log('RETREIVE')
+  return data
+}
+async function getSingleMovie(id) {
+  return await Movie.query().findById(id)
 }
 
-
-function getSingleMovie(id) {
-  return knex('movies')
-    .select('*')
-    .where({ id: parseInt(id) });
+async function addMovie(movie) {
+  return await Movie.query().insert(movie)
 }
 
-function addMovie(movie) {
-  return knex('movies')
-  .insert(movie)
-  .returning('*');
+async function updateMovie(id, movie) {
+  return await Movie.query()
+  .findById(id)
+  .patch(movie)
 }
 
-function updateMovie(id, movie) {
-  return knex('movies')
-  .update(movie)
-  .where({ id: parseInt(id) })
-  .returning('*');
+async function deleteMovie(id) {
+  return await Movie.query()
+  .deleteById(id);
 }
 
-function deleteMovie(id) {
-  return knex('movies')
-  .del()
-  .where({ id: parseInt(id) })
-  .returning('*');
-}
+// async function getSingleMovie(id) {
+//   return await knex('movies')
+//     .select('*')
+//     .where({ id: parseInt(id) });
+// }
+
+// function addMovie(movie) {
+//   return knex('movies')
+//   .insert(movie)
+//   .returning('*');
+// }
+
+// function updateMovie(id, movie) {
+//   return knex('movies')
+//   .update(movie)
+//   .where({ id: parseInt(id) })
+//   .returning('*');
+// }
+
+// function deleteMovie(id) {
+//   return knex('movies')
+//   .del()
+//   .where({ id: parseInt(id) })
+//   .returning('*');
+// }
+
 
 module.exports = {
   getAllMovies,
